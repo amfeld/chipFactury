@@ -51,7 +51,7 @@ public class MachineRoomView extends GridRoomView implements Observer {
 		 * We want to be notified upon change in the model, therefore we should add this as an observer to our machine
 		 * 1. TODO: Add this class as an observer to the machine passed as a parameter
 		 */
-
+		machine.addObserver(this);
 
 		display();
 		setButtonActions();
@@ -72,10 +72,10 @@ public class MachineRoomView extends GridRoomView implements Observer {
 		 * 2. TODO: Use the values from the machine (current-/ target-temperature, current-/ target-voltage) and \
 		 *          provide them instead of the static dummy values
 		 */
-		currentTemperatureDisplay.setText(42 + "");
-		currentVoltageDisplay.setText(42 + "");
-		targetTemperatureDisplay.setText(42 + "");
-		targetVoltageDisplay.setText(42 + "");
+		currentTemperatureDisplay.setText(currMachine.getCurrentTemperature() + "");
+		currentVoltageDisplay.setText(currMachine.getCurrentVoltage() + "");
+		targetTemperatureDisplay.setText(currMachine.getTargetTemperature() + "");
+		targetVoltageDisplay.setText(currMachine.getTargetVoltage() + "");
 	}
 
 	/**
