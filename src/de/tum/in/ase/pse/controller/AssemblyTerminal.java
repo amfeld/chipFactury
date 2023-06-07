@@ -2,6 +2,7 @@ package de.tum.in.ase.pse.controller;
 
 import de.tum.in.ase.pse.model.AssemblyMachine;
 import de.tum.in.ase.pse.model.ChipType;
+import de.tum.in.ase.pse.utils.FactoryException;
 
 /**
  * The controller class for the model AssemblyMachine
@@ -21,12 +22,17 @@ public class AssemblyTerminal {
 	 * It checks if the input value is between the min. and the max. temperature of the machine,
 	 * and throws a FactoryException otherwise.
 	 */
-	public void setTargetTemperature(int targetTemperature) {
+	public void setTargetTemperature(int targetTemperature) throws FactoryException {
 		/**
 		 * 1. TODO: Implement this function by checking, if the passed targetTemperature is in the range denoted \
 		 *          by the machine's min- and max-temperature. If in range, set the machines target temperature, \
 		 *          if not throw a new Factory Exception
 		 */
+
+		if(targetTemperature > machine.getMaxTemperature() && targetTemperature < machine.getMinTemperature()) {
+			throw new FactoryException("Temperature out of bound");
+		}
+		machine.setTargetTemperature(targetTemperature);
 	}
 
 	/**
@@ -40,6 +46,11 @@ public class AssemblyTerminal {
 		 *          by the machine's min- and max-temperature. If in range, set the machines target voltage, \
 		 *          if not throw a new Factory Exception
 		 */
+
+		if(targetVoltage > machine.getMaxVoltage() && targetVoltage < machine.getMinVoltage()) {
+			throw new FactoryException("Voltage out of bound");
+		}
+		machine.setTargetVoltage(targetVoltage);
 	}
 
 	/**
@@ -52,6 +63,10 @@ public class AssemblyTerminal {
 		 * 3. TODO: Implement this function by checking, if the passed space is in the range [27, 60] \
 		 *          If in range, set the machines target space , if not throw a new Factory Exception
 		 */
+		if (space > 60 && space < 27) {
+			throw new FactoryException("Space of is not within [27, 60] ");
+		}
+		machine.setSpaceBetweenTrans(space);
 	}
 
 	/**

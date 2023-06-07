@@ -26,16 +26,17 @@ public class TransistorMachine extends Machine {
 
 	public void setTransistorSize(int transistorSize) {
 		this.transistorSize = transistorSize;
+		notifyObservers();
 	}
 
 	public void setTransistorType(TransistorType transistorType) {
 		this.transistorType = transistorType;
-		super.notifyObservers();
+		notifyObservers();
 	}
 
 	public void setGateType(GateType gateType) {
 		this.gateType = gateType;
-		super.notifyObservers();
+		notifyObservers();
 	}
 
 	/**
