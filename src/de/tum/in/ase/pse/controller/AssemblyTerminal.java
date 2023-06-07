@@ -29,7 +29,7 @@ public class AssemblyTerminal {
 		 *          if not throw a new Factory Exception
 		 */
 
-		if(targetTemperature > machine.getMaxTemperature() && targetTemperature < machine.getMinTemperature()) {
+		if(targetTemperature > machine.getMaxTemperature() || targetTemperature < machine.getMinTemperature()) {
 			throw new FactoryException("Temperature out of bound");
 		}
 		machine.setTargetTemperature(targetTemperature);
@@ -47,7 +47,7 @@ public class AssemblyTerminal {
 		 *          if not throw a new Factory Exception
 		 */
 
-		if(targetVoltage > machine.getMaxVoltage() && targetVoltage < machine.getMinVoltage()) {
+		if(targetVoltage > machine.getMaxVoltage() || targetVoltage < machine.getMinVoltage()) {
 			throw new FactoryException("Voltage out of bound");
 		}
 		machine.setTargetVoltage(targetVoltage);
@@ -63,7 +63,7 @@ public class AssemblyTerminal {
 		 * 3. TODO: Implement this function by checking, if the passed space is in the range [27, 60] \
 		 *          If in range, set the machines target space , if not throw a new Factory Exception
 		 */
-		if (space > 60 && space < 27) {
+		if (space > 60 || space < 27) {
 			throw new FactoryException("Space of is not within [27, 60] ");
 		}
 		machine.setSpaceBetweenTrans(space);

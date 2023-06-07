@@ -28,7 +28,7 @@ public class MachineTerminal {
 		 *          if not throw a new Factory Exception
 		 */
 
-		if(targetTemperature > machine.getMaxTemperature() && targetTemperature < machine.getMinTemperature()) {
+		if(targetTemperature > machine.getMaxTemperature() || targetTemperature < machine.getMinTemperature()) {
 			throw new FactoryException("Temperature out of bound");
 		}
 		machine.setTargetTemperature(targetTemperature);
@@ -45,7 +45,7 @@ public class MachineTerminal {
 		 *          by the machine's min- and max-temperature. If in range, set the machines target voltage, \
 		 *          if not throw a new Factory Exception
 		 */
-		if(targetVoltage > machine.getMaxVoltage() && targetVoltage < machine.getMinVoltage()) {
+		if(targetVoltage > machine.getMaxVoltage() || targetVoltage < machine.getMinVoltage()) {
 			throw new FactoryException("Voltage out of bound");
 		}
 		machine.setTargetVoltage(targetVoltage);
