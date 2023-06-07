@@ -64,7 +64,7 @@ public class TransistorControlRoomView extends ControlRoomView {
          */
         getCurrentTemperatureDisplay().setText(currMachine.getCurrentTemperature() + "");
         getCurrentVoltageDisplay().setText(currMachine.getCurrentVoltage() + "");
-        TransistorMachine transistorMachine = (TransistorMachine) currMachine;
+        //TransistorMachine transistorMachine = (TransistorMachine) currMachine;
         transSizeDisplay.setText(((TransistorMachine) currMachine).getTransistorSize() + "");
         transTypeDisplay.setText(((TransistorMachine) currMachine).getTransistorType().toString());
         gateTypeDisplay.setText(((TransistorMachine) currMachine).getGateType().toString());

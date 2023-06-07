@@ -64,7 +64,7 @@ public class AssemblyControlRoomView extends ControlRoomView {
          */
         getCurrentTemperatureDisplay().setText(currMachine.getCurrentTemperature() + "");
         getCurrentVoltageDisplay().setText(currMachine.getCurrentVoltage() + "");
-        AssemblyMachine assemblyMachine = (AssemblyMachine) currMachine;
+        //AssemblyMachine assemblyMachine = (AssemblyMachine) currMachine;
         spaceBetweenDisplay.setText(((AssemblyMachine) currMachine).getSpaceBetweenTrans() + "");
         chipTypeDisplay.setText(((AssemblyMachine) currMachine).getChipType().toString());
     }
