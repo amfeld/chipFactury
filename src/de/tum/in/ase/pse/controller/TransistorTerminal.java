@@ -13,6 +13,9 @@ import de.tum.in.ase.pse.utils.FactoryException;
 public class TransistorTerminal {
 
     private final TransistorMachine machine;
+    private static final int MIN_SIZE = 7;
+    private static final int MAX_SIZE = 22;
+
 
     public TransistorTerminal(TransistorMachine transistorMachine) {
         this.machine = transistorMachine;
@@ -62,7 +65,7 @@ public class TransistorTerminal {
          * 3. TODO: Implement this function by checking, if the passed transistorSize is in the range [7, 22] \
          *          If in range, set the machines target transistorSize , if not throw a new Factory Exception
          */
-        if (transistorSize > 60 || transistorSize < 27) {
+        if (transistorSize > MAX_SIZE || transistorSize < MIN_SIZE) {
             throw new FactoryException("Space of is not within [27, 60] ");
         }
         machine.setTransistorSize(transistorSize);
