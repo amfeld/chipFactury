@@ -45,6 +45,7 @@ public class TransistorControlRoomView extends ControlRoomView {
 	public TransistorControlRoomView(TransistorMachine machine, TransistorTerminal terminal) {
 		super(machine, SCENE_WIDTH, SCENE_HEIGHT);
 		this.terminal = terminal;
+		machine.addObserver(this);
 	}
 
 	/**
@@ -61,12 +62,12 @@ public class TransistorControlRoomView extends ControlRoomView {
 		 * 2. TODO: Use the values from the machine (current-temperature, current-voltage, transSize, transType\
 		 *          and gateType) and provide them instead of the static dummy values
 		 */
-		getCurrentTemperatureDisplay().setText(42 + "");
-		getCurrentVoltageDisplay().setText(42 + "");
+		getCurrentTemperatureDisplay().setText(currMachine.getCurrentTemperature() + "");
+		getCurrentVoltageDisplay().setText(currMachine.getCurrentVoltage() + "");
 		TransistorMachine transistorMachine = (TransistorMachine) currMachine;
-		transSizeDisplay.setText(42 + "");
-		transTypeDisplay.setText("A super fake transistor type");
-		gateTypeDisplay.setText("A fake always-true gate");
+		transSizeDisplay.setText(((TransistorMachine) currMachine).getTransistorSize() + "");
+		transTypeDisplay.setText(((TransistorMachine) currMachine).getTransistorType().toString());
+		gateTypeDisplay.setText(((TransistorMachine) currMachine).getGateType().toString());
 	}
 
 	/**

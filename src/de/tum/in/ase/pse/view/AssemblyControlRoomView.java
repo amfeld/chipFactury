@@ -45,6 +45,7 @@ public class AssemblyControlRoomView extends ControlRoomView {
 	public AssemblyControlRoomView(AssemblyMachine machine, AssemblyTerminal terminal) {
 		super(machine, SCENE_WIDTH, SCENE_HEIGHT);
 		this.terminal = terminal;
+		machine.addObserver(this);
 	}
 
 	/**
@@ -61,11 +62,11 @@ public class AssemblyControlRoomView extends ControlRoomView {
 		 * 2. TODO: Use the values from the machine (current-temperature, current-voltage, spaceBetweenTrans and \
 		 *          chipType) and provide them instead of the static dummy values
 		 */
-		getCurrentTemperatureDisplay().setText(42 + "");
-		getCurrentVoltageDisplay().setText(42 + "");
+		getCurrentTemperatureDisplay().setText(currMachine.getCurrentTemperature() + "");
+		getCurrentVoltageDisplay().setText(currMachine.getCurrentVoltage() + "");
 		AssemblyMachine assemblyMachine = (AssemblyMachine) currMachine;
-		spaceBetweenDisplay.setText(42 + "");
-		chipTypeDisplay.setText("A super fake dummy chip");
+		spaceBetweenDisplay.setText(((AssemblyMachine) currMachine).getSpaceBetweenTrans() + "");
+		chipTypeDisplay.setText(((AssemblyMachine) currMachine).getChipType().toString());
 	}
 
 	/**

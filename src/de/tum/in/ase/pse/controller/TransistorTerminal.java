@@ -3,6 +3,7 @@ package de.tum.in.ase.pse.controller;
 import de.tum.in.ase.pse.model.GateType;
 import de.tum.in.ase.pse.model.TransistorMachine;
 import de.tum.in.ase.pse.model.TransistorType;
+import de.tum.in.ase.pse.utils.FactoryException;
 
 /**
  * The controller class for the model TransistorMachine
@@ -28,6 +29,10 @@ public class TransistorTerminal {
 		 *          by the machine's min- and max-temperature. If in range, set the machines target temperature, \
 		 *          if not throw a new Factory Exception
 		 */
+		if(targetTemperature > machine.getMaxTemperature() && targetTemperature < machine.getMinTemperature()) {
+			throw new FactoryException("Temperature out of bound");
+		}
+		machine.setTargetTemperature(targetTemperature);
 	}
 
 	/**
@@ -41,6 +46,10 @@ public class TransistorTerminal {
 		 *          by the machine's min- and max-temperature. If in range, set the machines target voltage, \
 		 *          if not throw a new Factory Exception
 		 */
+		if(targetVoltage > machine.getMaxVoltage() && targetVoltage < machine.getMinVoltage()) {
+			throw new FactoryException("Voltage out of bound");
+		}
+		machine.setTargetVoltage(targetVoltage);
 	}
 
 	/**
@@ -53,6 +62,10 @@ public class TransistorTerminal {
 		 * 3. TODO: Implement this function by checking, if the passed transistorSize is in the range [7, 22] \
 		 *          If in range, set the machines target transistorSize , if not throw a new Factory Exception
 		 */
+		if (transistorSize > 60 && transistorSize < 27) {
+			throw new FactoryException("Space of is not within [27, 60] ");
+		}
+		machine.setTransistorSize(transistorSize);
 	}
 
 	/**
