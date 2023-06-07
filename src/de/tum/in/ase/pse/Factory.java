@@ -8,11 +8,11 @@ package de.tum.in.ase.pse;
  */
 public final class Factory {
 
-	private Factory() {
-	}
+    private Factory() {
+    }
 
-	public static void main(String[] args) {
-		//This is a workaround for a known issue when starting JavaFX applications
-		FactoryApplication.startApp(args);
-	}
+    public static void main(String[] args) {
+        //This is a workaround for a known issue when starting JavaFX applications
+        FactoryApplication.startApp(args);
+    }
 }

@@ -13,44 +13,44 @@ import javafx.util.Duration;
  */
 public class TemperatureSensor {
 
-	private Machine machine;
+    private Machine machine;
 
-	/**
-	 * 1.1 TODO: Add a "machine" attribute for a machine the sensor should control AND update the constructor accordingly
-	 */
-	private static final int MULTIPLIER = 3;
-	private static int timestamp = 0;
+    /**
+     * 1.1 TODO: Add a "machine" attribute for a machine the sensor should control AND update the constructor accordingly
+     */
+    private static final int MULTIPLIER = 3;
+    private static int timestamp = 0;
 
-	public TemperatureSensor(Machine machine) {
-		this.machine = machine;
-		//for simulating regular sensor input/update
-		Timeline beat = new Timeline(
-				new KeyFrame(Duration.ZERO, event -> sendValue()),
-				new KeyFrame(Duration.seconds(1), event -> {
-				})
-		);
-		beat.setAutoReverse(true);
-		beat.setCycleCount(Animation.INDEFINITE);
-		beat.play();
-	}
+    public TemperatureSensor(Machine machine) {
+        this.machine = machine;
+        //for simulating regular sensor input/update
+        Timeline beat = new Timeline(
+                new KeyFrame(Duration.ZERO, event -> sendValue()),
+                new KeyFrame(Duration.seconds(1), event -> {
+                })
+        );
+        beat.setAutoReverse(true);
+        beat.setCycleCount(Animation.INDEFINITE);
+        beat.play();
+    }
 
-	/**
-	 * This method updates the current temperature of the machine (by using machine's setter).
-	 * It simulates the new value by generating fluctuations around the target temperature.
-	 * It uses the timestamp to create alternating values.
-	 */
-	protected void sendValue() {
-		timestamp++;
+    /**
+     * This method updates the current temperature of the machine (by using machine's setter).
+     * It simulates the new value by generating fluctuations around the target temperature.
+     * It uses the timestamp to create alternating values.
+     */
+    protected void sendValue() {
+        timestamp++;
 
-		/**
-		 * For some reason we currently only have a static target temperature. Let us fix this problem:
-		 * 2.1 TODO: Update the value calculation by using the machine's target temperature instead of the static one here
-		 */
-		int targetTemperature = machine.getTargetTemperature();
-		int value = (int) Math.max(Math.sin(timestamp) * MULTIPLIER + targetTemperature, 0);
-		/**
-		 * 2. TODO: Update the machine's current temperature (the new value) using the machine's setter
-		 */
-		machine.setCurrentTemperature(value);
-	}
+        /**
+         * For some reason we currently only have a static target temperature. Let us fix this problem:
+         * 2.1 TODO: Update the value calculation by using the machine's target temperature instead of the static one here
+         */
+        int targetTemperature = machine.getTargetTemperature();
+        int value = (int) Math.max(Math.sin(timestamp) * MULTIPLIER + targetTemperature, 0);
+        /**
+         * 2. TODO: Update the machine's current temperature (the new value) using the machine's setter
+         */
+        machine.setCurrentTemperature(value);
+    }
 }

@@ -10,134 +10,134 @@ import java.util.List;
  */
 public abstract class Machine {
 
-	/**
-	 * 1.1 TODO: Create a list for the observers
-	 */
-	private List<Observer> observers = new ArrayList<>();
+    /**
+     * 1.1 TODO: Create a list for the observers
+     */
+    private List<Observer> observers = new ArrayList<>();
 
 
-	/**
-	 * machine values
-	 */
-	private final String name;
+    /**
+     * machine values
+     */
+    private final String name;
 
-	private final int minVoltage;
-	private final int maxVoltage;
-	private int targetVoltage;
-	private int currentVoltage;
+    private final int minVoltage;
+    private final int maxVoltage;
+    private int targetVoltage;
+    private int currentVoltage;
 
-	private final int minTemperature;
-	private final int maxTemperature;
-	private int targetTemperature;
-	private int currentTemperature;
+    private final int minTemperature;
+    private final int maxTemperature;
+    private int targetTemperature;
+    private int currentTemperature;
 
-	protected Machine(String name, int minVoltage, int maxVoltage, int targetVoltage, int minTemperature,
-	                  int maxTemperature, int targetTemperature) {
-		this.name = name;
-		this.minVoltage = minVoltage;
-		this.maxVoltage = maxVoltage;
-		this.targetVoltage = targetVoltage;
-		this.minTemperature = minTemperature;
-		this.maxTemperature = maxTemperature;
-		this.targetTemperature = targetTemperature;
-	}
+    protected Machine(String name, int minVoltage, int maxVoltage, int targetVoltage, int minTemperature,
+                      int maxTemperature, int targetTemperature) {
+        this.name = name;
+        this.minVoltage = minVoltage;
+        this.maxVoltage = maxVoltage;
+        this.targetVoltage = targetVoltage;
+        this.minTemperature = minTemperature;
+        this.maxTemperature = maxTemperature;
+        this.targetTemperature = targetTemperature;
+    }
 
-	/**
-	 * 1.2: TODO: Add a method addObserver(Observer) for adding observers to the list
-	 * This method attaches an observer to the observer list.
-	 */
+    /**
+     * 1.2: TODO: Add a method addObserver(Observer) for adding observers to the list
+     * This method attaches an observer to the observer list.
+     */
 
-	public void addObserver(Observer observer) {
+    public void addObserver(Observer observer) {
 
-		observers.add(observer);
-	}
-
-
-	/**
-	 * 1.2: TODO: Add a method removeObserver(Observer) for removing observers from the list
-	 * This method detaches an observer from the observer list.
-	 */
-
-	public void removeObserver(Observer observer) {
-		observers.remove(observer);
-	}
-
-	/**
-	 *  1.3: TODO: Add a method notifyObservers() for updating observers in the list
-	 * This method calls the update() method for each observer.
-	 */
-
-	protected void notifyObservers() {
-		for (Observer observer : observers) {
-			observer.update(this);
-		}
-	}
+        observers.add(observer);
+    }
 
 
-	/**
-	 * Standard setters for machine values, that can be changed/updated after instantiation.
-	 * Further the setters notify the machine's observers.
-	 * 1.4: TODO: Make sure that the observes get notified about all changes to the machine's parameters
-	 */
+    /**
+     * 1.2: TODO: Add a method removeObserver(Observer) for removing observers from the list
+     * This method detaches an observer from the observer list.
+     */
 
-	public void setTargetVoltage(int targetVoltage) {
-		this.targetVoltage = targetVoltage;
-		notifyObservers();
-	}
+    public void removeObserver(Observer observer) {
+        observers.remove(observer);
+    }
 
-	public void setCurrentVoltage(int currentVoltage) {
-		this.currentVoltage = currentVoltage;
-		notifyObservers();
-	}
+    /**
+     * 1.3: TODO: Add a method notifyObservers() for updating observers in the list
+     * This method calls the update() method for each observer.
+     */
 
-	public void setTargetTemperature(int targetTemperature) {
-		this.targetTemperature = targetTemperature;
-		notifyObservers();
-	}
+    protected void notifyObservers() {
+        for (Observer observer : observers) {
+            observer.update(this);
+        }
+    }
 
-	public void setCurrentTemperature(int currentTemperature) {
-		this.currentTemperature = currentTemperature;
-		notifyObservers();
-	}
 
-	/**
-	 * Standard getters for the machine values.
-	 */
+    /**
+     * Standard setters for machine values, that can be changed/updated after instantiation.
+     * Further the setters notify the machine's observers.
+     * 1.4: TODO: Make sure that the observes get notified about all changes to the machine's parameters
+     */
 
-	public String getName() {
-		return name;
-	}
+    public void setTargetVoltage(int targetVoltage) {
+        this.targetVoltage = targetVoltage;
+        notifyObservers();
+    }
 
-	public int getMinVoltage() {
-		return minVoltage;
-	}
+    public void setCurrentVoltage(int currentVoltage) {
+        this.currentVoltage = currentVoltage;
+        notifyObservers();
+    }
 
-	public int getMaxVoltage() {
-		return maxVoltage;
-	}
+    public void setTargetTemperature(int targetTemperature) {
+        this.targetTemperature = targetTemperature;
+        notifyObservers();
+    }
 
-	public int getTargetVoltage() {
-		return targetVoltage;
-	}
+    public void setCurrentTemperature(int currentTemperature) {
+        this.currentTemperature = currentTemperature;
+        notifyObservers();
+    }
 
-	public int getCurrentVoltage() {
-		return currentVoltage;
-	}
+    /**
+     * Standard getters for the machine values.
+     */
 
-	public int getMinTemperature() {
-		return minTemperature;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public int getMaxTemperature() {
-		return maxTemperature;
-	}
+    public int getMinVoltage() {
+        return minVoltage;
+    }
 
-	public int getTargetTemperature() {
-		return targetTemperature;
-	}
+    public int getMaxVoltage() {
+        return maxVoltage;
+    }
 
-	public int getCurrentTemperature() {
-		return currentTemperature;
-	}
+    public int getTargetVoltage() {
+        return targetVoltage;
+    }
+
+    public int getCurrentVoltage() {
+        return currentVoltage;
+    }
+
+    public int getMinTemperature() {
+        return minTemperature;
+    }
+
+    public int getMaxTemperature() {
+        return maxTemperature;
+    }
+
+    public int getTargetTemperature() {
+        return targetTemperature;
+    }
+
+    public int getCurrentTemperature() {
+        return currentTemperature;
+    }
 }
 

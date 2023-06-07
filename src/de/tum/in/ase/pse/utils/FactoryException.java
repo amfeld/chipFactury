@@ -5,9 +5,9 @@ package de.tum.in.ase.pse.utils;
  */
 public class FactoryException extends RuntimeException {
 
-	private static final long serialVersionUID = -7987583182222307233L;
+    private static final long serialVersionUID = -7987583182222307233L;
 
-	public FactoryException(String text) {
-		super(text);
-	}
+    public FactoryException(String text) {
+        super(text);
+    }
 }
