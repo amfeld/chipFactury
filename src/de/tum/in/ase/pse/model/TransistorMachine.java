@@ -54,4 +54,6 @@ public class TransistorMachine extends Machine {
 	public GateType getGateType() {
 		return gateType;
 	}
+
+
 }

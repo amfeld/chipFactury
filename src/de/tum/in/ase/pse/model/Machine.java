@@ -48,9 +48,8 @@ public abstract class Machine {
 	 */
 
 	public void addObserver(Observer observer) {
-		if(!observers.contains(observer)) {
-			observers.add(observer);
-		}
+
+		observers.add(observer);
 	}
 
 
