@@ -30,10 +30,12 @@ public class TransistorMachine extends Machine {
 
 	public void setTransistorType(TransistorType transistorType) {
 		this.transistorType = transistorType;
+		super.notifyObservers();
 	}
 
 	public void setGateType(GateType gateType) {
 		this.gateType = gateType;
+		super.notifyObservers();
 	}
 
 	/**

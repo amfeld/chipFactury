@@ -26,10 +26,12 @@ public class AssemblyMachine extends Machine {
 
 	public void setSpaceBetweenTrans(int spaceBetweenTrans) {
 		this.spaceBetweenTrans = spaceBetweenTrans;
+		super.notifyObservers();
 	}
 
 	public void setChipType(ChipType chipType) {
 		this.chipType = chipType;
+		super.notifyObservers();
 	}
 
 	/**

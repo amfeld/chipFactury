@@ -13,15 +13,16 @@ import javafx.util.Duration;
  */
 public class TemperatureSensor {
 
+	private Machine machine;
+
 	/**
 	 * 1.1 TODO: Add a "machine" attribute for a machine the sensor should control AND update the constructor accordingly
 	 */
-
 	private static final int MULTIPLIER = 3;
 	private static int timestamp = 0;
 
 	public TemperatureSensor(Machine machine) {
-
+		this.machine = machine;
 		//for simulating regular sensor input/update
 		Timeline beat = new Timeline(
 				new KeyFrame(Duration.ZERO, event -> sendValue()),
@@ -45,10 +46,11 @@ public class TemperatureSensor {
 		 * For some reason we currently only have a static target temperature. Let us fix this problem:
 		 * 2.1 TODO: Update the value calculation by using the machine's target temperature instead of the static one here
 		 */
-		int targetTemperature = 42;
+		int targetTemperature = machine.getTargetTemperature();
 		int value = (int) Math.max(Math.sin(timestamp) * MULTIPLIER + targetTemperature, 0);
 		/**
 		 * 2. TODO: Update the machine's current temperature (the new value) using the machine's setter
 		 */
+		machine.setCurrentTemperature(value);
 	}
 }

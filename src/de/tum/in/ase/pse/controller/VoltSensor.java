@@ -13,14 +13,18 @@ import javafx.util.Duration;
  */
 public class VoltSensor {
 
+	private Machine machine;
+
 	/**
 	 * 1.1 TODO: Add a "machine" attribute for a machine the sensor should control AND update the constructor accordingly
 	 */
 
+
+
 	private static int timestamp = 0;
 
 	public VoltSensor(Machine machine) {
-
+		this.machine = machine;
 		//for simulating regular sensor input/update
 		Timeline beat = new Timeline(
 				new KeyFrame(Duration.ZERO, event -> sendValue()),
@@ -44,12 +48,12 @@ public class VoltSensor {
 		 * For some reason we currently only have a static target voltage. Let us fix this problem:
 		 * 2.1 TODO: Update the value calculation by using the machine's target voltage instead of the static one here
 		 */
-		int targetVoltage = 230;
+		int targetVoltage = machine.getTargetVoltage();
 		int value = (int) Math.max(Math.sin(timestamp) * 2 + targetVoltage, 0);
 
 		/**
 		 * 2.2 TODO: Update the machine's current voltage (the new value) using the machine's setter
 		 */
-
+		machine.setCurrentVoltage(value);
 	}
 }
